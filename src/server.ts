@@ -1,0 +1,42 @@
+/**
+* Required External Modules
+*/
+
+import express from 'express';
+import cors from "cors";
+import csrf from "csurf";
+import helmet from "helmet";
+
+import subscribeRouter from "./routers/subscribe.router";
+
+/**
+ * App Variables
+ */
+
+const app: express.Application = express();
+
+/**
+ *  App Configuration
+ */
+
+app.use(cors({
+  methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+  origin: [/v2think\.com$/],
+  credentials: true,
+}));
+app.use(helmet());
+app.use(express.json());
+app.set('trust proxy', true);
+app.use(express.urlencoded({extended: true}));
+
+/**
+ *  Router Configuration
+ */
+
+app.use('/api/v1/subscribe', subscribeRouter);
+
+app.use('/*', async (req, res) => {
+  return res.sendStatus(404);
+});
+
+export default app;

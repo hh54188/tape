@@ -1,0 +1,11 @@
+node_modules
+dist/**/*.js
+dist/**/*.js.map
+dist/**/*.ts
+dist/**/*.ts.map
+dist/**/*.json
+public/*.html
+.env
+.env.test
+.idea
+.DS_Store

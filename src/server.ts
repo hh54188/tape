@@ -2,6 +2,7 @@
 * Required External Modules
 */
 
+import path from 'path';
 import express from 'express';
 import cors from "cors";
 import csrf from "csurf";
@@ -27,6 +28,7 @@ app.use(helmet());
 app.use(express.json());
 app.set('trust proxy', true);
 app.use(express.urlencoded({extended: true}));
+app.use('/public', express.static(path.join(__dirname, '/public')))
 
 /**
  *  Router Configuration

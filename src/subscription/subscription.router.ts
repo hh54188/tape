@@ -9,14 +9,14 @@ router.post('/',
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.redirect('/public/error.html');
     }
     const {email} = req.body
     await cosmosDbClient.createSubscriptionItem({
       id: uuid.v4(),
       email,
     })
-    return res.sendStatus(200)
+    return res.redirect('/public/welcome.html');
   })
 
 export default router;

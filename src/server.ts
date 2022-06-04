@@ -6,8 +6,7 @@ import express from 'express';
 import cors from "cors";
 import csrf from "csurf";
 import helmet from "helmet";
-
-import subscribeRouter from "./routers/subscribe.router";
+import subscriptionRouter from './subscription/subscription.router';
 
 /**
  * App Variables
@@ -33,10 +32,8 @@ app.use(express.urlencoded({extended: true}));
  *  Router Configuration
  */
 
-app.use('/api/v1/subscribe', subscribeRouter);
-
-app.use('/*', async (req, res) => {
-  return res.sendStatus(404);
-});
+app.use('/api/v1/subscribe', subscriptionRouter);
+app.use('/api/v1/health', async (req, res) => res.sendStatus(200));
+app.use('/*', async (req, res) => res.sendStatus(404));
 
 export default app;

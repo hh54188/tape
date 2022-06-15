@@ -7,7 +7,7 @@ import express from 'express';
 import cors from "cors";
 import csrf from "csurf";
 import helmet from "helmet";
-import subscriptionRouter from './subscription/subscription.router';
+import subscriptionRouter from './domains/subscription/subscription.router';
 
 /**
  * App Variables

@@ -1,9 +1,9 @@
 import supertest from "supertest";
-import app from '../server'
-import * as cosmosDbClient from '../clients/azure-cosmos-database-client'
+import app from '../../server'
+import * as cosmosDbClient from '../../clients/azure-cosmos-database-client'
 const fakeUUID = 'fake_uuid'
 const fakeEmail = 'hello@world.com'
-jest.mock('../clients/azure-cosmos-database-client', () => {
+jest.mock('../../clients/azure-cosmos-database-client', () => {
   return {
     createSubscriptionItem: jest.fn()
   }

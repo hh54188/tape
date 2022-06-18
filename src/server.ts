@@ -28,7 +28,6 @@ app.use(helmet());
 app.use(express.json());
 app.set('trust proxy', true);
 app.use(express.urlencoded({extended: true}));
-app.use('/public', express.static(path.join(__dirname, '/public')))
 
 /**
  *  Router Configuration

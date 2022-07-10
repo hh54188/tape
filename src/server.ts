@@ -20,7 +20,7 @@ const app: express.Application = express();
  */
 
 app.use(cors({
-  methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+  methods: ['POST'],
   origin: [/v2think\.com$/],
   credentials: true,
 }));

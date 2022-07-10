@@ -1,6 +1,7 @@
 import supertest from "supertest";
 import app from '../../server'
 import * as cosmosDbClient from '../../clients/azure-cosmos-database-client'
+import {MOCK_SUBSCRIPTION_SUCCESS_REDIRECT_URL, MOCK_SUBSCRIPTION_ERROR_REDIRECT_URL} from '../../../jest.setup'
 const fakeUUID = 'fake_uuid'
 const fakeEmail = 'hello@world.com'
 jest.mock('../../clients/azure-cosmos-database-client', () => {
@@ -27,7 +28,7 @@ describe('subscription', () => {
         email: fakeEmail
       })
       .expect(302)
-      .expect('Location', /welcome\.html$/)
+      .expect('Location', MOCK_SUBSCRIPTION_SUCCESS_REDIRECT_URL)
       .end(done)
   })
 
@@ -54,7 +55,7 @@ describe('subscription', () => {
         email: 'helloworld.com'
       })
       .expect(302)
-      .expect('Location', /error\.html$/)
+      .expect('Location', MOCK_SUBSCRIPTION_ERROR_REDIRECT_URL)
       .end(done)
   })
 

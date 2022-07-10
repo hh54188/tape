@@ -8,6 +8,7 @@ import cors from "cors";
 import csrf from "csurf";
 import helmet from "helmet";
 import subscriptionRouter from './domains/subscription/subscription.router';
+import healthRouter from './domains/health/health.router';
 
 /**
  * App Variables
@@ -34,7 +35,7 @@ app.use(express.urlencoded({extended: true}));
  */
 
 app.use('/api/v1/subscribe', subscriptionRouter);
-app.use('/api/v1/health', async (req, res) => res.sendStatus(200));
+app.use('/api/v1/health', healthRouter);
 app.use('/*', async (req, res) => res.sendStatus(404));
 
 export default app;
